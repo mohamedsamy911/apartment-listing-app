@@ -1,0 +1,191 @@
+openapi: 3.0.3
+info:
+  title: Apartment API Components
+  version: 1.0.0
+
+components:
+  schemas:
+    Apartment:
+      type: object
+      required:
+        - name
+        - unitNumber
+        - project
+        - price
+        - contactNumber
+        - imageUrls
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: "c2a1f6c1-d5e8-4f7c-b0a9-e9a8d8c3b4a5"
+        name:
+          type: string
+          example: "Luxury Downtown Suite"
+        unitNumber:
+          type: string
+          example: "301"
+        project:
+          type: string
+          example: "Skyline Towers"
+        description:
+          type: string
+          example: "Modern 3-bedroom apartment in downtown."
+        price:
+          type: number
+          example: 250000
+        imageUrls:
+          type: array
+          items:
+            type: string
+            example: "/api/files/image1.jpg"
+        contactNumber:
+          type: string
+          description: "Phone number in E.164 format"
+          example: "+201101029668"
+        createdAt:
+          type: string
+          format: date-time
+
+    CreateApartment:
+      type: object
+      required:
+        - name
+        - unitNumber
+        - project
+        - price
+        - contactNumber
+        - imageUrls
+      properties:
+        name:
+          type: string
+        unitNumber:
+          type: string
+        project:
+          type: string
+        description:
+          type: string
+        price:
+          type: number
+        contactNumber:
+          type: string
+        imageUrls:
+          type: array
+          items:
+            type: string
+
+    ApartmentsResponse:
+      type: object
+      properties:
+        apartments:
+          type: array
+          items:
+            $ref: "#/components/schemas/Apartment"
+        pagination:
+          type: object
+          properties:
+            currentPage:
+              type: integer
+              example: 1
+            totalPages:
+              type: integer
+              example: 1
+            totalCount:
+              type: integer
+              example: 1
+            hasNextPage:
+              type: boolean
+              example: false
+            hasPrevPage:
+              type: boolean
+              example: false
+            limit:
+              type: integer
+              example: 10
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Failed to fetch apartments"
+
+    ApartmentNotFoundResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Apartment not found"
+
+    ApartmentBadRequestResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            name:
+              type: string
+              example: "Name is required"
+            unitNumber:
+              type: string
+              example: "Unit number is required"
+            project:
+              type: string
+              example: "Project name is required"
+            description:
+              type: string
+              example: "Description is required"
+            price:
+              type: string
+              example: "Price must be greater than 0"
+            contactNumber:
+              type: string
+              example: "Invalid contact number format"
+            imageUrls:
+              type: string
+              example: "At least one image is required"
+        message:
+          type: string
+          example: "Validation failed"
+
+    AddApartmentFailedResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Internal server error"
+
+    UploadFileBadRequestResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "No file uploaded"
+
+    UploadFileFailedResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Failed to upload image"
+
+    InvalidFilenameResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Invalid filename"
+
+    FileNotFoundResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "File not found"
+
+    InternalServerErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Internal server error"
