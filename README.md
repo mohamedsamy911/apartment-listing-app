@@ -47,7 +47,7 @@ git clone https://github.com/mohamedsamy911/apartment-listing-app.git
 cd apartment-listing-app
 
 # Start the entire application with one command
-docker-compose up --build
+docker-compose up --build -d
 ```
 
 This will:
