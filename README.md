@@ -306,10 +306,10 @@ model Apartment {
 
 ## 🧑‍💻 Author
 
-**Mohamed Samy**
-Software Engineer — Full Stack Developer
-🌐 [mohamedsamy911.github.io](https://mohamedsamy911.github.io)
-💼 [LinkedIn](https://www.linkedin.com/in/mohamed-samy-ba0107141/)
+**Mohamed Samy**\
+Software Engineer — Full Stack Developer\
+🌐 [mohamedsamy911.github.io](https://mohamedsamy911.github.io)\
+💼 [LinkedIn](https://www.linkedin.com/in/mohamed-samy-ba0107141/)\
 📧 [mohamedadel74@gmail.com](mailto:mohamedadel74@gmail.com)
 
 ---
