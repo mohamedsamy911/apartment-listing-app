@@ -46,7 +46,11 @@ export default function Navbar({ setOpen }: NavbarProps): JSX.Element {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link
-            href={`/?page=${DEFAULT_PAGE}&limit=${DEFAULT_LIMIT}`}
+            href={
+              pathname != "/"
+                ? `/?page=${DEFAULT_PAGE}&limit=${DEFAULT_LIMIT}`
+                : ""
+            }
             className="flex items-center space-x-2 group"
           >
             <div className="p-2 rounded-xl group-hover:scale-105 transition-transform duration-200">

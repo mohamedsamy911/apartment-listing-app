@@ -1,5 +1,7 @@
 "use client";
 import React, { JSX } from "react";
+import { TfiControlBackward, TfiControlForward } from "react-icons/tfi";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 /**
  * @interface PaginationProps
@@ -50,8 +52,8 @@ export default function Pagination({
   hasNextPage,
   onPageChange,
 }: PaginationProps): JSX.Element {
-  // Determine how many page numbers to show (max 5, or fewer if total pages is less)
-  const maxVisiblePages = 5;
+  // Determine how many page numbers to show (max 3, or fewer if total pages is less)
+  const maxVisiblePages = 3;
   const visiblePageCount = Math.min(maxVisiblePages, totalPages);
 
   /**
@@ -65,15 +67,15 @@ export default function Pagination({
     if (totalPages <= maxVisiblePages) {
       pageNumber = index + 1;
     }
-    // Case 2: Near the beginning - show first 5 pages
-    else if (currentPage <= 3) {
+    // Case 2: Near the beginning - show first 3 pages
+    else if (currentPage <= 2) {
       pageNumber = index + 1;
     }
-    // Case 3: Near the end - show last 5 pages
+    // Case 3: Near the end - show last 3 pages
     else if (currentPage >= totalPages - 2) {
       pageNumber = totalPages - maxVisiblePages + index + 1;
     }
-    // Case 4: In the middle - show 2 pages before and after current page
+    // Case 4: In the middle - show 1 page before and after current page
     else {
       pageNumber = currentPage - 2 + index;
     }
@@ -89,14 +91,27 @@ export default function Pagination({
       role="navigation"
       aria-label="Pagination"
     >
+      {/* First Page Button */}
+      <button
+        aria-label="First page"
+        onClick={() => onPageChange(1)}
+        disabled={currentPage === 1}
+        className={`flex items-center px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors ${
+          currentPage !== 1 && "cursor-pointer"
+        }`}
+      >
+        <TfiControlBackward className="w-3 h-5 mr-1" />
+      </button>
       {/* Previous Page Button */}
       <button
         aria-label="Previous page"
         onClick={() => onPageChange(currentPage - 1)}
         disabled={!hasPrevPage}
-        className="flex items-center px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+        className={`flex items-center px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors ${
+          hasPrevPage && "cursor-pointer"
+        }`}
       >
-        Previous
+        <IoIosArrowBack className="w-3 h-5 mr-1" />
       </button>
 
       {/* Page Number Buttons */}
@@ -106,9 +121,11 @@ export default function Pagination({
             aria-current={currentPage === pageNumber ? "page" : undefined}
             aria-label={`Go to page ${pageNumber}`}
             key={pageNumber}
-            onClick={() => onPageChange(pageNumber)}
+            onClick={() =>
+              currentPage !== pageNumber && onPageChange(pageNumber)
+            }
             className={`
-              w-10 h-10 rounded-lg transition-colors
+              w-9 h-10 rounded-lg transition-colors
               ${
                 currentPage === pageNumber
                   ? "bg-blue-600 text-white" // Active page styling
@@ -126,9 +143,22 @@ export default function Pagination({
         aria-label="Next page"
         onClick={() => onPageChange(currentPage + 1)}
         disabled={!hasNextPage}
-        className="flex items-center px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+        className={`flex items-center px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors ${
+          hasNextPage && "cursor-pointer"
+        }`}
       >
-        Next
+        <IoIosArrowForward className="w-3 h-5 mr-1" />
+      </button>
+      {/* Last Page Button */}
+      <button
+        aria-label="Last page"
+        onClick={() => onPageChange(totalPages)}
+        disabled={currentPage === totalPages}
+        className={`"flex items-center px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors ${
+          currentPage !== totalPages && "cursor-pointer"
+        }`}
+      >
+        <TfiControlForward className="w-3 h-5 mr-1" />
       </button>
     </div>
   );

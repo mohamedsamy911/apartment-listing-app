@@ -18,13 +18,12 @@ export const ApartmentSchema = z.object({
     .transform((val) => Number(val)),
   contactNumber: z
     .string()
-    .regex(/^(\+201|00201)[0-2,5]{1}[0-9]{8}$/, "Invalid contact number format"),
+    .regex(/^(\+201|00201)[0-2,5]{1}[0-9]{8}$/, "Contact number should be in the format +201101029668"),
   imageUrls: z
     .array(z.string().regex(/^\/api\/files\/.*/, "Invalid image URL format"))
     .min(1, "At least one image is required")
     .max(8, "Maximum of 8 images allowed"),
 });
 
-// Export inferred types
-export type ApartmentFormSchema = z.infer<typeof ApartmentSchema>;
+
 export type ApartmentFormInput = z.input<typeof ApartmentSchema>; // before transform
