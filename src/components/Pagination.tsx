@@ -94,6 +94,7 @@ export default function Pagination({
       {/* First Page Button */}
       <button
         aria-label="First page"
+        title="Go to first page"
         onClick={() => onPageChange(1)}
         disabled={currentPage === 1}
         className={`flex items-center px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors ${
@@ -105,6 +106,7 @@ export default function Pagination({
       {/* Previous Page Button */}
       <button
         aria-label="Previous page"
+        title="Go to previous page"
         onClick={() => onPageChange(currentPage - 1)}
         disabled={!hasPrevPage}
         className={`flex items-center px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors ${
@@ -120,6 +122,11 @@ export default function Pagination({
           <button
             aria-current={currentPage === pageNumber ? "page" : undefined}
             aria-label={`Go to page ${pageNumber}`}
+            title={
+              currentPage !== pageNumber
+                ? `Go to page ${pageNumber}`
+                : undefined
+            }
             key={pageNumber}
             onClick={() =>
               currentPage !== pageNumber && onPageChange(pageNumber)
@@ -141,6 +148,7 @@ export default function Pagination({
       {/* Next Page Button */}
       <button
         aria-label="Next page"
+        title="Go to next page"
         onClick={() => onPageChange(currentPage + 1)}
         disabled={!hasNextPage}
         className={`flex items-center px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors ${
@@ -152,6 +160,7 @@ export default function Pagination({
       {/* Last Page Button */}
       <button
         aria-label="Last page"
+        title="Go to last page"
         onClick={() => onPageChange(totalPages)}
         disabled={currentPage === totalPages}
         className={`"flex items-center px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors ${
