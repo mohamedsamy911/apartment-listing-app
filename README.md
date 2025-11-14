@@ -185,12 +185,6 @@ Visit: [http://localhost:3000/docs](http://localhost:3000/docs)
 
 ---
 
-## 🧩 Key Components
-
-Absolutely! You should definitely update the Key Components section to highlight these important parts of your architecture. Here's the updated section for your README:
-
----
-
 ## 🧩 Key Components & Architecture
 
 ### 🏗️ `ApartmentListClient` Component
