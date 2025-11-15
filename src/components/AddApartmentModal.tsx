@@ -82,7 +82,7 @@ export default function AddApartmentModal({
       unitNumber: "",
       project: "",
       description: "",
-      price: 0,
+      price: "",
       contactNumber: "",
       imageUrls: [],
     },
@@ -361,7 +361,7 @@ export default function AddApartmentModal({
                             <button
                               type="button"
                               onClick={() => removeImage(i)}
-                              className="absolute -top-2 -right-2 w-5 h-5 bg-red-500 text-white rounded-full text-xs opacity-0 group-hover:opacity-100"
+                              className="absolute -top-2 -right-2 w-5 h-5 bg-red-500 text-white rounded-full text-xs lg:opacity-0 group-hover:opacity-100"
                             >
                               ×
                             </button>
