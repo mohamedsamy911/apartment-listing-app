@@ -1,6 +1,6 @@
 # 🏠 Apartment Listing App
 
-A full-stack **Next.js 14** web application that allows users to **browse, search, and add apartments for sale** with images, descriptions, and contact information.
+A full-stack **Next.js 16** web application that allows users to **browse, search, and add apartments for sale** with images, descriptions, and contact information.
 
 This project was built as part of a Software Engineer hiring assignment to demonstrate skills in **modern full-stack development**, including **Next.js (App Router)**, **Prisma ORM**, and **RESTful API design**.
 
@@ -12,7 +12,7 @@ This project was built as part of a Software Engineer hiring assignment to demon
 - 🏢 **Add Apartments** — Floating action button opens a modal form to add a new apartment.  
 - 🖼️ **Image Uploads** — Upload multiple apartment images via `/api/upload`.  
 - 💾 **Persistent Storage** — Uses Prisma with PostgreSQL for data management.  
-- 🧭 **App Router Ready** — Uses Next.js 14 with `next/navigation`, `use client` components, and dynamic routes.  
+- 🧭 **App Router Ready** — Uses Next.js 16 with `next/navigation`, `use client` components, and dynamic routes.  
 - 💅 **Responsive Design** — Built with Tailwind CSS for a clean, modern UI.  
 - ⚙️ **Pagination** — Efficient backend pagination for apartment lists.  
 - 📚 **API Documentation** — Interactive Swagger documentation available at `/docs`.
@@ -23,7 +23,7 @@ This project was built as part of a Software Engineer hiring assignment to demon
 
 | Layer | Technology |
 |-------|-------------|
-| **Frontend** | Next.js 14 (App Router) |
+| **Frontend** | Next.js 16 (App Router) |
 | **Form Handling** | React Hook Form |
 | **Form Validation** | Zod |
 | **Styling** | Tailwind CSS |
